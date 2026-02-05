@@ -6,8 +6,8 @@ local ActiveUsers = loadstring(game:HttpGet("https://raw.githubusercontent.com/A
 
 -- Create Window
 local Window = beranitakut:CreateWindow({
-    Title = "This is a demo of beranitakutLib",
-    SubTitle = "v1.0.0",
+    Title = "beranitakutLib",
+    SubTitle = "This is a demo of beranitakutLib",
     Size = UDim2.fromOffset(600, 450),
     
     -- Config System
