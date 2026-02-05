@@ -1,5 +1,5 @@
 -- =====================================================
--- OP BLADE v1.3.0
+-- OP BLADE v1.4.0
 -- Made by beranitakut
 -- =====================================================
 
@@ -25,7 +25,7 @@ local function notify(title, text, duration)
 end
 
 notify(
-    "OP Blade by beranitakut v1.3.0",
+    "OP Blade by beranitakut v1.4.0",
     "Getting script from server...",
     3
 )
