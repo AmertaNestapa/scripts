@@ -32,7 +32,7 @@ local Window = beranitakut:CreateWindow({
     -- Info Window
     ShowInfo = true, -- Show info window (default: true)
     InfoContent = {
-        Links = {
+        Links = { -- These three examples, you can change to anything from Name, URL, Icon
             {
                 Name = "Website",
                 URL = "https://beranitakut.vercel.app",
@@ -57,8 +57,7 @@ local Window = beranitakut:CreateWindow({
 
         -- Credits
         Credits = {
-            Developer = "beranitakut",
-            UILibrary = "beranitakutLib v1.0.0"
+            ScriptBy = "beranitakut" -- Your name or alias
         }
     }
 })
