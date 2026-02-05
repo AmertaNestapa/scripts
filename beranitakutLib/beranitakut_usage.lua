@@ -1,9 +1,12 @@
 -- Load Library
-local beranitakut = loadstring(game:HttpGet("https://raw.githubusercontent.com/AmertaNestapa/scripts/refs/heads/main/beranitakut.lua"))()
+local beranitakut = loadstring(game:HttpGet("https://raw.githubusercontent.com/AmertaNestapa/scripts/refs/heads/main/beranitakutLib/main.lua"))()
+
+-- Load Active Users Module
+local ActiveUsers = loadstring(game:HttpGet("https://raw.githubusercontent.com/AmertaNestapa/scripts/refs/heads/main/beranitakutLib/active-users-module.lua"))()
 
 -- Create Window
 local Window = beranitakut:CreateWindow({
-    Title = "beranitakutLib Demo",
+    Title = "This is a demo of beranitakutLib",
     SubTitle = "v1.0.0",
     Size = UDim2.fromOffset(600, 450),
     
@@ -17,7 +20,11 @@ local Window = beranitakut:CreateWindow({
             Version = "v0.0.0",
             Date = "Feb 4, 2026",
             Changes = {
-                "Demo beranitakutLib"
+                {Type = "Added", Text = "Added/New"},
+                {Type = "Fixed", Text = "Fixed/Fix"},
+                {Type = "Changed", Text = "Changed/Updated"},
+                {Type = "Removed", Text = "Removed/Deleted"},
+                {Type = "Improved", Text = "Improved"}
             }
         }
     },
@@ -43,6 +50,11 @@ local Window = beranitakut:CreateWindow({
             }
         },
 
+        -- Stats
+        Stats = {
+            ActiveNow = "Loading..." -- Will be updated automatically
+        },
+
         -- Credits
         Credits = {
             Developer = "beranitakut",
@@ -50,6 +62,13 @@ local Window = beranitakut:CreateWindow({
         }
     }
 })
+
+-- =====================================================
+-- INITIALIZE REAL-TIME ACTIVE USERS TRACKING
+-- =====================================================
+
+local tracker = ActiveUsers.new("beranitakutLib Demo", Window)
+tracker:start()
 
 -- =====================================================
 -- UPDATE STATS DYNAMICALLY
@@ -131,6 +150,21 @@ local Slider = MainTab:AddSlider("Slider", {
 -- Slider methods
 -- Slider:SetValue(50) -- Set value
 -- print(Slider.Value) -- Get value
+
+-- Create Color Picker
+local ColorPicker = MainTab:AddColorPicker("Color_Picker", {
+    Title = "Color Picker",
+    Description = "Demo Color Picker (Lighting ambient)",
+    Default = Color3.fromRGB(128, 128, 128),
+    Callback = function(color)
+        game.Lighting.Ambient = color
+        print("Lighting ambient changed!")
+    end
+})
+
+-- Color Picker methods
+-- ColorPicker:SetValue(Color3.fromRGB(255, 0, 0))
+-- local currentColor = ColorPicker:GetValue()
 
 -- Create Input
 local Input = MainTab:AddInput("Input", {
@@ -253,6 +287,13 @@ task.spawn(function()
 end)
 
 -- =====================================================
+-- STOP TRACKING WHEN SCRIPT UNLOADS (Optional)
+-- =====================================================
+game:GetService("Players").LocalPlayer.OnTeleport:Connect(function()
+    tracker:stop()
+end)
+
+-- =====================================================
 -- RE-EXECUTE (Optional)
 -- =====================================================
 
@@ -262,7 +303,7 @@ if queue_on_teleport then
     queue_on_teleport([[
         repeat task.wait() until game:IsLoaded()
         print("Re-executing beranitakutLib demo...")
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/AmertaNestapa/scripts/refs/heads/main/beranitakut_usage.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/AmertaNestapa/scripts/refs/heads/main/beranitakutLib/beranitakut_usage.lua"))()
     ]])
 end
 
