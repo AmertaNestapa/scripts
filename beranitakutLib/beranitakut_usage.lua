@@ -67,23 +67,6 @@ local Window = beranitakut:CreateWindow({
 local tracker = ActiveUsers.new("beranitakutLib Demo", Window)
 tracker:start()
 
--- UPDATE STATS DYNAMICALLY
-
--- Update runtime counter
-local startTime = os.time()
-task.spawn(function()
-    while task.wait(1) do
-        local uptime = os.time() - startTime
-        local hours = math.floor(uptime / 3600)
-        local minutes = math.floor((uptime % 3600) / 60)
-        local seconds = uptime % 60
-        
-        -- Update stats in Info Window
-        Window:UpdateStat("Runtime", string.format("%dh %dm %ds", hours, minutes, seconds))
-        Window:UpdateStat("Status", "✅ Active")
-    end
-end)
-
 -- CREATE TABS
 
 local MainTab = Window:AddTab({
