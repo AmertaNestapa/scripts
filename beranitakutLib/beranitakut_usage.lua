@@ -47,7 +47,7 @@ local Window = beranitakut:CreateWindow({
                 Name = "Report Bugs",
                 URL = "https://github.com/yourusername/yourrepo/issues",
                 Icon = "🐛"
-            }
+            },
         },
 
         -- Stats
@@ -62,16 +62,12 @@ local Window = beranitakut:CreateWindow({
     }
 })
 
--- =====================================================
 -- INITIALIZE REAL-TIME ACTIVE USERS TRACKING
--- =====================================================
 
 local tracker = ActiveUsers.new("beranitakutLib Demo", Window)
 tracker:start()
 
--- =====================================================
 -- UPDATE STATS DYNAMICALLY
--- =====================================================
 
 -- Update runtime counter
 local startTime = os.time()
@@ -88,17 +84,13 @@ task.spawn(function()
     end
 end)
 
--- =====================================================
 -- CREATE TABS
--- =====================================================
 
 local MainTab = Window:AddTab({
     Title = "Main"
 })
 
--- =====================================================
 -- MAIN TAB
--- =====================================================
 
 -- Paragraph
 MainTab:AddParagraph({
@@ -213,9 +205,7 @@ local MultiSelectDropdown = MainTab:AddDropdown("Multi_Select_Dropdown", {
 -- MultiSelectDropdown:SetValue({"1", "2"}) -- Set values
 -- print(table.concat(MultiSelectDropdown.Value, ", ")) -- Get values
 
--- =====================================================
 -- CONFIG TAB - Save/Load System
--- =====================================================
 
 local ConfigTab = Window:AddTab({
     Title = "Config"
@@ -224,9 +214,7 @@ local ConfigTab = Window:AddTab({
 -- Add config section (automatically creates save/load UI)
 ConfigTab:AddConfigSection()
 
--- =====================================================
 -- NOTIFICATIONS
--- =====================================================
 
 beranitakut:Notify({
     Title = "Script Loaded!",
@@ -260,9 +248,7 @@ beranitakut:Notify({
     Duration = 3
 })
 
--- =====================================================
--- USEFUL FUNCTIONS
--- =====================================================
+-- USEFUL FUNCTIONS (Optional)
 
 -- Get/Set element values programmatically
 task.spawn(function()
@@ -285,16 +271,13 @@ task.spawn(function()
     print("Dropdown changed to 3 programmatically")
 end)
 
--- =====================================================
--- STOP TRACKING WHEN SCRIPT UNLOADS (Optional)
--- =====================================================
+-- STOP TRACKING WHEN SCRIPT UNLOADS
+
 game:GetService("Players").LocalPlayer.OnTeleport:Connect(function()
     tracker:stop()
 end)
 
--- =====================================================
 -- RE-EXECUTE (Optional)
--- =====================================================
 
 local queue_on_teleport = queue_on_teleport or syn and syn.queue_on_teleport or fluxus and fluxus.queue_on_teleport
 
