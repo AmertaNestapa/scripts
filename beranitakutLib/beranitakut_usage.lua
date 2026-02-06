@@ -1,3 +1,5 @@
+-- NOT UPDATED
+
 -- Load Library
 local beranitakut = loadstring(game:HttpGet("https://raw.githubusercontent.com/AmertaNestapa/scripts/refs/heads/main/beranitakutLib/main.lua"))()
 
